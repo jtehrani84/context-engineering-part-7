@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>From Operating System to Evolving Harness | Context Engineering Part 7</title>
+<title>From Operating System to Evolving Harness — Context Engineering, Part 7</title>
 <meta name="description" content="Part 7 of the Context Engineering series. How a personal agent harness learned to operate, verify, and evolve itself, on a frozen model. Four things you can run in the browser: the voice guard, the preserve-and-extend gate, the right-oracle check, and the harness's own drift.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,14 +44,17 @@ tailwind.config = { theme: { extend: {
 <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-700/50">
   <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
     <span class="text-sm font-mono text-gray-500">context-engineering <span class="text-blue-400">//</span> part-7</span>
-    <div class="flex items-center gap-3 sm:gap-5 text-xs text-gray-500">
-      <a href="https://jtehrani84.github.io/claude-context-architecture/" class="hover:text-gray-300 transition-colors hidden sm:inline">Part 1</a>
-      <a href="https://jtehrani84.github.io/context-engineering-agentscript/" class="hover:text-gray-300 transition-colors hidden sm:inline">Part 2</a>
-      <a href="https://jtehrani84.github.io/context-engineering-mcp/" class="hover:text-gray-300 transition-colors hidden md:inline">Part 3</a>
-      <a href="https://jtehrani84.github.io/context-engineering-knowledge-graph/" class="hover:text-gray-300 transition-colors hidden md:inline">Part 4</a>
-      <a href="https://jtehrani84.github.io/context-engineering-skills/" class="hover:text-gray-300 transition-colors">Part 5</a>
-      <a href="https://jtehrani84.github.io/claude-context-architecture/from-memory-to-operating-system.html" class="hover:text-gray-300 transition-colors">Part 6</a>
-      <span class="text-blue-400 font-semibold">Part 7</span>
+    <div class="flex items-center gap-3 sm:gap-4 text-xs font-mono text-gray-500">
+      <a href="https://jtehrani84.github.io/claude-context-architecture/" class="hover:text-gray-300 transition-colors hidden sm:inline">1</a>
+      <a href="https://jtehrani84.github.io/context-engineering-agentscript/" class="hover:text-gray-300 transition-colors hidden sm:inline">2</a>
+      <a href="https://jtehrani84.github.io/context-engineering-mcp/" class="hover:text-gray-300 transition-colors hidden sm:inline">3</a>
+      <a href="https://jtehrani84.github.io/context-engineering-knowledge-graph/" class="hover:text-gray-300 transition-colors hidden sm:inline">4</a>
+      <a href="https://jtehrani84.github.io/context-engineering-skills/" class="hover:text-gray-300 transition-colors hidden sm:inline">5</a>
+      <a href="https://jtehrani84.github.io/claude-context-architecture/from-memory-to-operating-system.html" class="hover:text-gray-300 transition-colors hidden sm:inline">6</a>
+      <span class="text-blue-400 font-semibold">7</span>
+      <a href="https://jtehrani84.github.io/context-engineering-part-8/" class="hover:text-gray-300 transition-colors">8</a>
+      <a href="https://jtehrani84.github.io/context-engineering-part-9/" class="hover:text-gray-300 transition-colors">9</a>
+      <a href="https://jtehrani84.github.io/context-engineering-part-10/" class="hover:text-gray-300 transition-colors">10</a>
     </div>
   </div>
 </nav>
@@ -151,7 +154,7 @@ tailwind.config = { theme: { extend: {
       </div>
       <div class="glass rounded-xl p-5">
         <div class="flex items-baseline gap-3 mb-2"><span class="mono text-emerald font-semibold">02 · verify</span><span class="text-slate-500 text-sm">the harness checks the truth of its own claims</span></div>
-        <p class="text-slate-300 leading-relaxed">Part 6's lesson was <em>knowledge needs enforcement</em>, but what it enforced was code shape. Today four sibling rules, each born from a dated failure in real customer or account work (sanitized on this page) and each wired to a gate, enforce something harder than shape. They check that a claim is actually <em>true</em>. Don't say "done" without a running artifact. Don't act on a finding the artifact has already outgrown. Don't outrun the source you're citing. And don't call something false because you checked the wrong place, which is why two of those run below.</p>
+        <p class="text-slate-300 leading-relaxed">Part 6's lesson was <em>knowledge needs enforcement</em>, but what it enforced was code shape. Today four sibling rules, each born from a dated failure in real customer or account work (sanitized on this page) and each wired to a gate, enforce something harder than shape. They check that a claim is actually <em>true</em>, so don't say "done" without a running artifact, don't act on a finding the artifact has already outgrown, don't outrun the source you're citing, and don't call something false just because you checked the wrong place. Two of those last four run below.</p>
       </div>
       <div class="glass rounded-xl p-5">
         <div class="flex items-baseline gap-3 mb-2"><span class="mono text-violet-400 font-semibold">03 · evolve</span><span class="text-slate-500 text-sm">the harness improves itself, gated</span></div>
@@ -442,7 +445,7 @@ tailwind.config = { theme: { extend: {
       <figcaption class="mono text-xs text-slate-500 mt-3 leading-relaxed">Each of these four rules has a birthday. The demos above run three of them, and the origin isn't a lab exercise, the deal work burned me first.</figcaption>
     </figure>
     <p class="text-slate-300 leading-relaxed mb-4">Every rule behind those demos was forced by real customer work going wrong in a specific, dated way. A capability claim in a customer Support handoff got written toward the reassuring version instead of what the source actually said. An account audit called a batch of real facts "fabricated" because it checked them against a filing that would never list them (that's the check you just ran, sanitized, it was a real account, and 13 of 15 "fabrications" turned out to be true). An account brief invented dollar figures when the data regenerated underneath it. The account-research platform quietly wrote zero rows for six weeks while every code review called it done.</p>
-    <p class="text-slate-300 leading-relaxed mb-4">Three of those four are customer-facing artifacts. The harness learned to check the truth of a claim because a claim reached a customer, or nearly did, and was wrong. Each failure became a rule, and each rule became a wired gate. The tidy "four rules born from a dated failure" up in the verify plane has a concrete origin, and it isn't a lab exercise, because the deal work burned me first.</p>
+    <p class="text-slate-300 leading-relaxed mb-4">Three of those four are customer-facing artifacts. The harness learned to check the truth of a claim because a claim reached a customer, or nearly did, and was wrong. Each failure became a rule, and each rule became a wired gate. The tidy "four rules born from a dated failure" line up in the verify plane has a concrete origin behind it. Real deal work went sideways on me first, and each rule is just what I built afterward so that particular failure would stop happening.</p>
     <p class="text-slate-300 leading-relaxed mb-4">It's where the other two planes live too. Operate, in a deal, means every product claim gets grounded in a cited corpus before it reaches a customer, and opening an account's Slack channel or writing into a deal folder auto-fires the reminder to do it. Verify means a territory number traces to one source of record behind a gate that turns red on a wrong figure. This is how the account work gets done now, because of how it used to break.</p>
     <p class="text-sm text-slate-500 leading-relaxed">The caveat is that I can show you the rules and their dated origins, but the deal domain they guard is private, so what's here is the pattern rather than the accounts themselves. And whether every gate fires on a live brief this morning is something I'd prove by running it, rather than by showing you a file.</p>
   </section>
@@ -452,7 +455,7 @@ tailwind.config = { theme: { extend: {
     <h2 class="text-2xl font-bold mb-4">Where This Is Thin</h2>
     <p class="text-slate-300 leading-relaxed mb-4">The self-verify half is mature and load-bearing, with four rules, four wired gates, and use in every session. The self-<em>evolve</em> half is real but early, with one measured guard, one benchmark task the agent actually missed (the gate correctly rejected it), and correction loops that mostly propose rather than act. So the title says "evolving," in the present tense, because it isn't "evolved" yet.</p>
     <p class="text-slate-300 leading-relaxed mb-4">The verifier is only a proxy that scores slop and voice-law. Whether the writing is true or persuasive is beyond it. Optimizing any proxy hard enough eventually games it, which is exactly why the held-out gate exists and why the guard earns "better at catching my known tells" instead of "objectively better writing."</p>
-    <p class="text-slate-300 leading-relaxed">The sharpest gap is that until the day I wrote this, the tooling that makes all of this measurable had no version history, and the folder wasn't even tracked. A harness that preaches "prove it, and don't trust a stale finding" wasn't applying either rule to itself, which is fixed now. And it's the most honest thing in this whole series, because the drift you saw in the last demo is the system's natural entropy, and the answer isn't faith. It's a periodic, adversarial audit of your own machine.</p>
+    <p class="text-slate-300 leading-relaxed">The sharpest gap is that until the day I wrote this, the tooling that makes all of this measurable had no version history, and the folder wasn't even tracked. A harness that preaches "prove it, and don't trust a stale finding" wasn't applying either rule to itself, which is fixed now. And it's the most honest thing in this whole series, because the drift you saw in the last demo is just the system's natural entropy, and you don't hold entropy off with faith, you hold it off by auditing your own machine on a schedule, as adversarially as you'd audit anyone else's.</p>
   </section>
 
   <!-- THE CEILING — mimic + provenance (merged arms-race finding) -->
@@ -494,7 +497,7 @@ tailwind.config = { theme: { extend: {
       <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-red text-xs mb-1">the twist</div><div class="text-slate-300">a same-author judge rated the fake <span class="mono">more me than me</span>, 83.1 vs 82.8</div></div>
     </div>
     <p class="text-slate-300 leading-relaxed mb-4">Then I found a signal that seemed to fix it. A cheap deterministic check flipped the score to 11 out of 11 on the imitations, and for an afternoon it looked solved. It wasn't. The check keyed on a punctuation habit the imitation over-applied, and a one-line instruction to the imitator erased it, back to 0 out of 7 on an adaptive version. Worse, a dumb "is this longer than forty words" rule scored identically to my sophisticated one, because the real thing separating the two sets was length, not voice. I'd built a detector for my own test, not for imitation, which is the exact Part 7 lesson committed again by the person who wrote the warning.</p>
-    <p class="text-slate-300 leading-relaxed">So the answer isn't a better detector. When the imitation is short, in my register, grounded in things I actually say, there's no signal left in the text, and asking a blind checker "is this John?" is the wrong oracle for the question. The durable defense is provenance: who actually typed it. The guard still earns its keep, catching every lazy imitation for free and never flagging my real work, but past the point where a mimic knows the guard exists, knowing where the words came from beats judging the words. That ceiling is worth naming out loud, because the failure mode isn't missing a mimic, it's a "clean" verdict on the one input built to earn it.</p>
+    <p class="text-slate-300 leading-relaxed">So a better detector isn't the answer here. When the imitation is short, in my register, and grounded in things I actually say, there's no signal left in the text, and asking a blind checker "is this John?" is the wrong oracle for the question anyway. What actually holds is provenance, knowing who typed it. The guard still earns its keep, since it catches every lazy imitation for free and never flags my real work, but once a mimic knows the guard exists, where the words came from tells you more than the words do. That ceiling is worth saying out loud, because the failure here isn't missing some mimic in the wild, it's handing a "clean" verdict to the one input built to earn it.</p>
   </section>
 
   <!-- SELF-SCORE CLOSE -->
@@ -509,7 +512,7 @@ tailwind.config = { theme: { extend: {
 
   <!-- SO WHAT — business value / outcome wrap -->
   <section class="fade-up">
-    <h2 class="text-2xl font-bold mb-4">So What, Then: What This Is Actually Worth</h2>
+    <h2 class="text-2xl font-bold mb-4">What the Harness Actually Buys</h2>
     <p class="text-slate-300 leading-relaxed mb-5">Seven parts have argued one idea, that the harness is the product and the model is a rentable CPU. Here's what that buys, and it lands in three places.</p>
     <p class="text-slate-300 leading-relaxed mb-4"><span class="text-blue-400 font-semibold">For me and every SE,</span> the harness measurably improved, and it now keeps a change only when it clears a held-out bar, so my own output got better and stopped regressing quietly. It scales past me through the SE Starter Kit, so other SEs can run the same discipline rather than rebuild it. And the next build makes it model-agnostic, the same <span class="mono text-sm">~/.claude</span> config ported onto an open runtime so it runs on GPT, Grok, or Gemini, one harness across every model. That port is planned, not shipped, and I'll show it when it runs.</p>
     <p class="text-slate-300 leading-relaxed mb-4"><span class="text-emerald font-semibold">For the customer,</span> every enterprise standing up agents hits the same wall. No way to tell whether a change made the agent better, regressions that ship silently, and "eval" that's really a vibe. What's on this page demonstrates the answer rather than describing it. You measure the change, gate the regression before it reaches anyone, evaluate with a bound instead of a vanity number, and prove where an output came from when no detector can. That's an agent-quality and trust conversation, and it opens a bigger door than a feature demo.</p>
@@ -519,7 +522,12 @@ tailwind.config = { theme: { extend: {
 
   <footer class="fade-up border-t border-line pt-8 text-sm text-slate-500">
     <p class="mb-2">Context Engineering is a series on giving Claude durable context. Parts 1 through 6 covered memory, Agent Script, MCP, the knowledge graph, skills, and the operating system.</p>
-    <p>Part 7 references <a href="https://arxiv.org/abs/2608.07545" target="_blank" rel="noopener">DarwinX (arXiv 2608.07545)</a> and its open-source framework Beagle. Everything interactive here runs locally in your browser. No data leaves the page.</p>
+    <p class="mb-4">Part 7 references <a href="https://arxiv.org/abs/2608.07545" target="_blank" rel="noopener">DarwinX (arXiv 2608.07545)</a> and its open-source framework Beagle. Everything interactive here runs locally in your browser. No data leaves the page.</p>
+    <p class="mb-6">Part 8 picks up where the ceiling left off, and it takes this harness from something I run to something that stays safe and portable when other people run it. That's next: <a href="https://jtehrani84.github.io/context-engineering-part-8/">read Part 8 →</a></p>
+    <div class="border-t border-line pt-6 font-mono text-xs flex flex-col md:flex-row justify-between gap-3">
+      <span>Context Engineering Series · Part 7 · John Tehrani</span>
+      <span>The harness is the product; the model is a rentable CPU.</span>
+    </div>
   </footer>
 
 </main>
